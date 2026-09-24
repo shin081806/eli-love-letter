@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Eli, My Baby ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #fdf4f5;
+    color: #553d43;
+    font-family: Poppins, sans-serif;
+    overflow-x: hidden;
+}
+
+/* ================= OPENING ================= */
+
+#opening {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 20% 20%, white 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 70%, white 0 2px, transparent 3px),
+        linear-gradient(145deg, #f9dfe4, #fff8f8);
+
+    background-size: 120px 120px, 160px 160px, 100% 100%;
+
+    transition: opacity 0.9s, transform 0.9s;
+}
+
+#opening.hide {
+    opacity: 0;
+    transform: scale(1.04);
+    pointer-events: none;
+}
+
+.glow {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: white;
+    filter: blur(70px);
+    opacity: 0.5;
+}
+
+.heart {
+    position: absolute;
+    color: #e6a4b2;
+    opacity: 0.5;
+    animation: float 5s ease-in-out infinite;
+}
+
+.h1 {
+    top: 12%;
+    left: 12%;
+}
+
+.h2 {
+    top: 22%;
+    right: 14%;
+    font-size: 30px;
+    animation-delay: 1s;
+}
+
+.h3 {
+    bottom: 15%;
+    left: 17%;
+    font-size: 28px;
+    animation-delay: 2s;
+}
+
+.h4 {
+    bottom: 23%;
+    right: 12%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-18px) rotate(8deg);
+        opacity: 0.85;
+    }
+}
+
+.open-box {
+    text-align: center;
+    z-index: 2;
+    padding: 25px;
+}
+
+.intro {
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #9c707b;
+}
+
+.open-box h1 {
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(60px, 12vw, 105px);
+    color: #b96f80;
+    font-weight: 400;
+    margin: 5px 0 22px;
+}
+
+/* ================= ENVELOPE ================= */
+
+.envelope {
+    width: min(350px, 82vw);
+    height: 220px;
+    margin: auto;
+    position: relative;
+    cursor: pointer;
+    perspective: 900px;
+
+    filter: drop-shadow(
+        0 20px 30px rgba(125, 70, 85, 0.18)
+    );
+}
+
+.env {
+    position: absolute;
+    inset: 0;
+    background: #fffafa;
+    border-radius: 15px;
+    border: 1px solid #efd3d9;
+    overflow: hidden;
+}
+
+.env:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    border-left: 175px solid #f5e3e7;
+    border-top: 110px solid transparent;
+}
+
+.env:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    border-right: 175px solid #f5e3e7;
+    border-top: 110px solid transparent;
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+
+    border-left: 175px solid transparent;
+    border-right: 175px solid transparent;
+    border-top: 120px solid #e9bcc7;
+
+    transform-origin: top center;
+    transition: transform 1s ease;
+}
+
+.letter-preview {
+    position: absolute;
+    z-index: 2;
+
+    left: 9%;
+    right: 9%;
+    top: 18px;
+    height: 175px;
+
+    background: white;
+    border-radius: 10px;
+
+    padding: 28px 10px;
+    color: #bd7b8b;
+
+    transition: transform 1s ease;
+}
+
+.letter-preview strong {
+    font-family: "Great Vibes", cursive;
+    font-size: 31px;
+    font-weight: 400;
+}
+
+.seal {
+    position: absolute;
+    z-index: 5;
+
+    left: 50%;
+    top: 78px;
+
+    transform: translateX(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+    background: #c98293;
+    color: white;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 24px;
+
+    box-shadow: 0 7px 14px #d9a9b3;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .letter-preview {
+    transform: translateY(-155px);
+}
+
+.tap {
+    margin-top: 24px;
+    color: #98717b;
+    font-size: 15px;
+}
+
+/* ================= LETTER ================= */
+
+#letter-page {
+    min-height: 100vh;
+    padding: 70px 20px;
+
+    background: linear-gradient(
+        #fff9fa,
+        #fbe9ed
+    );
+
+    display: flex;
+    justify-content: center;
+}
+
+.paper {
+    width: min(760px, 100%);
+
+    background: #fffdfb;
+
+    padding: clamp(30px, 7vw, 75px);
+
+    border: 1px solid #f0dce1;
+
+    box-shadow:
+        0 20px 60px rgba(110, 65, 78, 0.13);
+
+    position: relative;
+}
+
+.paper:before {
+    content: "";
+
+    position: absolute;
+    inset: 12px;
+
+    border: 1px solid #f2e1e5;
+
+    pointer-events: none;
+}
+
+.small-title {
+    text-align: center;
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    color: #b17b86;
+
+    font-size: 12px;
+
+    position: relative;
+}
+
+.paper h2 {
+    text-align: center;
+
+    font-family: "Great Vibes", cursive;
+
+    font-weight: 400;
+
+    font-size: clamp(48px, 9vw, 76px);
+
+    color: #b66d7d;
+
+    margin: 8px 0 35px;
+
+    position: relative;
+}
+
+.letter {
+    position: relative;
+
+    font-family: "DM Serif Display", serif;
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    color: #5c484d;
+}
+
+.letter p {
+    margin: 0 0 22px;
+}
+
+.signature {
+    text-align: right;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: 43px;
+
+    color: #b66d7d;
+
+    margin-top: 30px;
+}
+
+/* ================= BUTTON ================= */
+
+.love-btn {
+    display: block;
+
+    margin: 45px auto 0;
+
+    border: 0;
+
+    background: #bc7485;
+    color: white;
+
+    padding: 14px 28px;
+
+    border-radius: 999px;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 22px rgba(150, 85, 101, 0.22);
+
+    transition: 0.25s;
+}
+
+.love-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* ================= SURPRISE ================= */
+
+#surprise {
+    display: none;
+
+    text-align: center;
+
+    padding: 60px 20px 20px;
+
+    animation: fade 0.8s ease;
+}
+
+#surprise.show {
+    display: block;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+#surprise h3 {
+    font-family: "Great Vibes", cursive;
+
+    font-size: 56px;
+
+    font-weight: 400;
+
+    color: #b66d7d;
+
+    margin: 0;
+}
+
+#surprise p {
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: #755960;
+}
+
+.big-heart {
+    font-size: 60px;
+
+    display: block;
+
+    margin: 10px 0;
+
+    animation: beat 1.2s infinite;
+}
+
+@keyframes beat {
+    50% {
+        transform: scale(1.16);
+    }
+}
+
+/* ================= MUSIC ================= */
+
+.music {
+    position: fixed;
+
+    right: 18px;
+    bottom: 18px;
+
+    z-index: 20;
+
+    width: 52px;
+    height: 52px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: #b66d7d;
+
+    font-size: 21px;
+
+    box-shadow:
+        0 8px 20px rgba(100, 55, 70, 0.18);
+
+    cursor: pointer;
+}
+
+.music-note {
+    position: fixed;
+
+    right: 20px;
+    bottom: 75px;
+
+    color: #9c747d;
+
+    display: none;
+
+    font-size: 11px;
+}
+
+.music-note.show {
+    display: block;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    .letter {
+        font-size: 16px;
+        line-height: 1.9;
+    }
+
+    .paper {
+        padding: 35px 25px;
+    }
+
+    .open-box h1 {
+        font-size: 75px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= OPENING ================= -->
+
+<section id="opening">
+
+    <div class="glow"></div>
+
+    <div class="heart h1">♡</div>
+    <div class="heart h2">♥</div>
+    <div class="heart h3">♡</div>
+    <div class="heart h4">♥</div>
+
+    <div class="open-box">
+
+        <div class="intro">
+            A little something for
+        </div>
+
+        <h1>Eli</h1>
+
+        <div
+            class="envelope"
+            id="envelope"
+            onclick="openLetter()"
+        >
+
+            <div class="env"></div>
+
+            <div class="letter-preview">
+
+                <strong>
+                    For my baby
+                </strong>
+
+                <br>
+
+                <small>
+                    open this when you have a moment ♡
+                </small>
+
+            </div>
+
+            <div class="flap"></div>
+
+            <div class="seal">
+                ♡
+            </div>
+
+        </div>
+
+        <div class="tap">
+            click the letter ♡
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LOVE LETTER ================= -->
+
+<section id="letter-page">
+
+    <article class="paper">
+
+        <div class="small-title">
+            A letter for you
+        </div>
+
+        <h2>
+            My Baby, Eli
+        </h2>
+
+
+        <div class="letter">
+
+            <p>
+                My baby,
+            </p>
+
+
+            <p>
+                I don't think I'll ever find enough words
+                to explain just how much I love you.
+                Somehow, you came into my life and brought
+                so much joy into it — a kind of joy I didn't
+                even know I was missing.
+            </p>
+
+
+            <p>
+                I love you not because you have to be someone
+                else or because you have to be perfect.
+                I love you for being <em>you</em>.
+                For the way you laugh, the way you care,
+                the little things you do, and even the parts
+                of yourself you sometimes don't realize
+                are worth loving.
+            </p>
+
+
+            <p>
+                You deserve to be loved in every special way
+                possible. You deserve a love that makes you
+                feel safe, appreciated, chosen, and understood.
+                I hope I can always remind you that you are
+                worthy of that kind of love.
+            </p>
+
+
+            <p>
+                Thank you for being part of my life.
+                Thank you for all the happiness you've brought
+                into my days and for making ordinary moments
+                feel a little more special.
+                Having you in my life is something I'll always
+                be grateful for.
+            </p>
+
+
+            <p>
+                I love you so, so much, Eli.
+                More than I can probably put into a website,
+                a letter, or even words.
+            </p>
+
+
+            <p>
+                And if I had to choose you all over again,
+                I'd still choose you.
+                <strong>Always.</strong>
+            </p>
+
+
+            <div class="signature">
+                I love you ♡
+            </div>
+
+        </div>
+
+
+        <button
+            class="love-btn"
+            onclick="showSurprise()"
+        >
+            one more thing...
+        </button>
+
+
+        <div id="surprise">
+
+            <span class="big-heart">
+                ♡
+            </span>
+
+            <h3>
+                It's always going to be you.
+            </h3>
+
+            <p>
+                No matter how many times I get the chance
+                to choose,
+                <br>
+
+                I'd still choose my baby, Eli. ❤️
+            </p>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+<!-- ================= MUSIC ================= -->
+
+<!--
+    Put your legally obtained copy of
+    "Sila" by SUD in the same folder as this file.
+
+    Rename it:
+
+    sila.mp3
+-->
+
+<audio
+    id="music"
+    loop
+>
+
+    <source
+        src="sila.mp3"
+        type="audio/mpeg"
+    >
+
+</audio>
+
+
+<button
+    class="music"
+    id="musicBtn"
+    onclick="toggleMusic()"
+>
+    ♫
+</button>
+
+
+<div
+    class="music-note"
+    id="musicNote"
+>
+    Add sila.mp3 beside index.html to play music ♡
+</div>
+
+
+<script>
+
+/* ================= OPEN LETTER ================= */
+
+function openLetter() {
+
+    const envelope =
+        document.getElementById("envelope");
+
+    envelope.classList.add("open");
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById("opening")
+            .classList.add("hide");
+
+
+        setTimeout(() => {
+
+            document
+                .getElementById("letter-page")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }, 350);
+
+    }, 1100);
+}
+
+
+/* ================= SURPRISE ================= */
+
+function showSurprise() {
+
+    const surprise =
+        document.getElementById("surprise");
+
+    surprise.classList.add("show");
+
+
+    setTimeout(() => {
+
+        surprise.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+        burstHearts();
+
+    }, 100);
+}
+
+
+/* ================= FLOATING HEARTS ================= */
+
+function burstHearts() {
+
+    for (let i = 0; i < 18; i++) {
+
+        const heart =
+            document.createElement("span");
+
+        heart.textContent =
+            ["♡", "♥", "❤"][
+                Math.floor(Math.random() * 3)
+            ];
+
+
+        heart.style.position = "fixed";
+
+        heart.style.left =
+            (40 + Math.random() * 20) + "%";
+
+        heart.style.top = "55%";
+
+        heart.style.color = "#c47a8b";
+
+        heart.style.fontSize =
+            (15 + Math.random() * 22) + "px";
+
+        heart.style.zIndex = "50";
+
+        heart.style.pointerEvents = "none";
+
+
+        document.body.appendChild(heart);
+
+
+        const x =
+            (Math.random() - 0.5) * 500;
+
+        const y =
+            -(100 + Math.random() * 400);
+
+
+        heart.animate(
+
+            [
+                {
+                    transform:
+                        "translate(0,0) scale(.5)",
+
+                    opacity: 1
+                },
+
+                {
+                    transform:
+                        `translate(${x}px,${y}px) scale(1.2)`,
+
+                    opacity: 0
+                }
+            ],
+
+            {
+                duration:
+                    1500 + Math.random() * 800,
+
+                easing: "ease-out"
+            }
+
+        ).onfinish = () => heart.remove();
+
+    }
+
+}
+
+
+/* ================= MUSIC ================= */
+
+function toggleMusic() {
+
+    const music =
+        document.getElementById("music");
+
+    const button =
+        document.getElementById("musicBtn");
+
+    const note =
+        document.getElementById("musicNote");
+
+
+    if (music.paused) {
+
+        music.play()
+
+            .then(() => {
+
+                button.textContent = "Ⅱ";
+
+                note.classList.remove("show");
+
+            })
+
+            .catch(() => {
+
+                note.classList.add("show");
+
+            });
+
+    }
+
+    else {
+
+        music.pause();
+
+        button.textContent = "♫";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
